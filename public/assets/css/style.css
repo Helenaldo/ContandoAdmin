@@ -1,6 +1,6 @@
-/*   
+/*
 Theme Name: psFree
-Theme URI: 
+Theme URI:
 Author: Koval Web
 Author URI: https://www.templatemonster.com/vendors/kovalweb
 Description: The Template is created for web template
@@ -1236,6 +1236,7 @@ input[type="week"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="file"],
+select,
 textarea {
     display: block;
     font-size: 1rem;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Site\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,7 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('cadastro', [TenantController::class, 'index'])->name('cadastro');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
