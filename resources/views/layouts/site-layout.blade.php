@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <title>Contando | @yield('title')</title>
         <meta name="description" content="Description">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-        <link rel="icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="assets/css/bootstrap-grid.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="preload" href="assets/fonts/source-sans-pro-v21-latin/source-sans-pro-v21-latin-regular.woff2" as="font"
+        <link rel="icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/assets/css/bootstrap-grid.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="preload" href="/assets/fonts/source-sans-pro-v21-latin/source-sans-pro-v21-latin-regular.woff2" as="font"
             type="font/woff2" crossorigin>
-        <link rel="preload" href="assets/fonts/source-sans-pro-v21-latin/source-sans-pro-v21-latin-700.woff2" as="font"
+        <link rel="preload" href="/assets/fonts/source-sans-pro-v21-latin/source-sans-pro-v21-latin-700.woff2" as="font"
             type="font/woff2" crossorigin>
-        <link rel="preload" href="assets/fonts/montserrat-v25-latin/montserrat-v25-latin-700.woff2" as="font"
+        <link rel="preload" href="/assets/fonts/montserrat-v25-latin/montserrat-v25-latin-700.woff2" as="font"
             type="font/woff2" crossorigin>
-        <link rel="preload" href="assets/fonts/montserrat-v25-latin/montserrat-v25-latin-600.woff2" as="font"
+        <link rel="preload" href="/assets/fonts/montserrat-v25-latin/montserrat-v25-latin-600.woff2" as="font"
             type="font/woff2" crossorigin>
-        <link rel="preload" href="assets/fonts/material-icons/material-icons.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="assets/fonts/material-icons/material-icons-outlined.woff2" as="font" type="font/woff2"
+        <link rel="preload" href="/assets/fonts/material-icons/material-icons.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/material-icons/material-icons-outlined.woff2" as="font" type="font/woff2"
             crossorigin>
+        @yield( 'css' )
     </head>
     <body>
         <main class="main">
@@ -32,7 +33,7 @@
                                 <a href="/">Home</a>
                             </li>
                             <li>
-                                <a href="{{ route('cadastro') }}">Registrar</a>
+                                <a href="{{ route('tenant.create')}}">Registrar</a>
                             </li>
                             {{--
 
@@ -62,7 +63,7 @@
                             <div class="row flex-nowrap align-items-center justify-content-between">
                                 <div class="col-auto header-fixed-col logo-wrapper">
                                     <a href="/" class="logo" title="Contando">
-                                    <img src="assets/img/logo-contando.png" alt="Contando">
+                                    <img src="/assets/img/logo-contando.png" alt="Contando">
                                     </a>
                                 </div>
                                 <div class="col-auto col-xl col-static header-fixed-col d-none d-xl-block">
@@ -77,7 +78,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{ route('cadastro') }}" data-title="Registrar">
+                                                        <a href="{{ route('tenant.create')}}" data-title="Registrar">
                                                         <span>Registrar</span>
                                                         </a>
                                                     </li>
@@ -129,12 +130,7 @@
                     </nav>
                 </header>
 
-
-                @yield('content')
-
-
-
-
+                @yield( 'content' )
 
 
             </div>
@@ -148,7 +144,7 @@
                                     <div class="widget-brand-info-main">
                                         <a href="/" class="logo" title="Contando">
                                         <img data-src="assets/img/logo-white.svg" class="lazy"
-                                            src="assets/img/logo-contando-sem-fundo.png" alt="Contando" data-loaded="true"
+                                            src="/assets/img/logo-contando-sem-fundo.png" alt="Contando" data-loaded="true"
                                             style="opacity: 1;">
                                         </a>
                                     </div>
@@ -159,7 +155,7 @@
                                     <nav class="footer-nav">
                                         <ul class="footer-mnu footer-mnu-line">
                                             <li><a href="/" class="hover-link" data-title="Home"><span>Home</span></a></li>
-                                            <li><a href="{{ route('cadastro') }}" class="hover-link" data-title="Cadastro"><span>Registrar</span></a></li>
+                                            <li><a href="{{ route('tenant.create')}}" class="hover-link" data-title="Registrar"><span>Registrar</span></a></li>
                                             {{--
                                             <li><a href="#!" class="hover-link" data-title="Services"><span>Services</span></a></li>
                                             <li><a href="#!" class="hover-link" data-title="News"><span>News</span></a></li>
@@ -199,12 +195,19 @@
             <!-- End footer -->
         </main>
         <!-- End main -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/lozad/lozad.min.js"></script>
-        <script src="assets/libs/device/device.js"></script>
-        <script src="assets/libs/spincrement/jquery.spincrement.min.js"></script>
-        <script src="assets/libs/pristine/pristine.min.js"></script>
-        <script src="assets/js/custom.js"></script>
-        <script src="assets/js/forms.js"></script>
+
+        <script src="/assets/libs/jquery/jquery.min.js"></script>
+        <script src="/assets/libs/lozad/lozad.min.js"></script>
+        <script src="/assets/libs/device/device.js"></script>
+        <script src="/assets/libs/spincrement/jquery.spincrement.min.js"></script>
+        <script src="/assets/libs/pristine/pristine.min.js"></script>
+        <script src="/assets/js/custom.js"></script>
+        <script src="/assets/js/forms.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+        {{-- <script src="/assets/js/mascaras.js" type="text/javascript"></script> --}}
+        @yield( 'js' )
+
     </body>
 </html>

@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Tenant extends Model
 {
     use HasFactory;
-    protected $table = 'clientes';
+    protected $table = 'tenants';
     protected $fillable = [
         'tipo_identificacao', // CNPJ ou CPF
         'cnpj_cpf',
-        'contrato', // String com 4 números e 2 letras
+        'contrato',
         'nome',
         'email',
         'cep',
@@ -23,9 +23,7 @@ class Tenant extends Model
         'complemento',
         'telefone',
         'cidade_id',
-        'data_entrada',
         'data_saida',
-        'tipo', // Matriz ou Filial
     ];
 
     // Vários Tenants tem uma cidade

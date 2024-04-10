@@ -1,9 +1,9 @@
 (function() {
 
 	"use strict";
-  
+
 	var app = {
-		
+
 		init: function() {
 
 			//=== Main visible ===\\
@@ -27,7 +27,7 @@
 			this.device();
 
 		},
-        
+
 		setUpListeners: function() {
 
 			//=== Ripple effect for buttons ===\\
@@ -50,7 +50,7 @@
 			$(window).on("scroll", this.btnTopScroll);
 
 			$(document).on("click", '.scroll-to', this.scrollTo);
-			
+
 		},
 
 		//=== Body visible ===\\
@@ -68,12 +68,12 @@
 
 		appendBtnTop: function() {
 
-			$("body").append('<div class="btn-top"><svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg></div>');
+			$("body").append('<div class="btn-top"><svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="/assets/img/sprite.svg#arrow-right"></use></svg></div>');
 
 		},
 
 		btnTop: function() {
-			
+
 			$('html, body').animate({scrollTop: 0}, 1000, function() {
 				$(this).removeClass("active");
 			});
@@ -81,9 +81,9 @@
 		},
 
 		btnTopScroll: function() {
-			
+
 			var btnTop = $('.btn-top');
-			
+
 			if ($(this).scrollTop() > 700) {
 
 				btnTop.addClass("active");
@@ -91,7 +91,7 @@
 			} else {
 
 				btnTop.removeClass("active");
-				
+
 			}
 
 		},
@@ -108,28 +108,28 @@
 			init: function() {
 
 				if( $('.header-fixed').length ) {
-	
+
 					$(window).on("load resize scroll", app.headerFixed.handler);
-	
+
 				}
-				
+
 			},
-	
+
 			IS_FIXED: false,
-	
+
 			handler: function() {
-	
+
 				var header = $('.header-fixed');
 				var height = header.outerHeight();
 				var offsetTop = header.offset().top;
 				var scrollTop = $(this).scrollTop();
-	
+
 				var headerStatic = $(".header-fixed-static");
-				if(headerStatic.length) { 
+				if(headerStatic.length) {
 					offsetTop = headerStatic.offset().top;
 					headerStatic.css("height", height);
 				}
-	
+
 				if(scrollTop >= offsetTop) {
 					if(!app.headerFixed.IS_FIXED) {
 						header.addClass("fixed");
@@ -143,7 +143,7 @@
 					}
 					app.headerFixed.IS_FIXED = false;
 				}
-	
+
 			}
 
 		},
@@ -164,7 +164,7 @@
 					.addClass("active")
 					.siblings()
 					.removeClass("active");
-			
+
 			}
 
 		},
@@ -209,18 +209,18 @@
 				if(headeFixedOffsetTop <= headerOffsetTop) {
 					$("html").scrollTop(headeFixedOffsetTop + 1);
 				}
-					
+
 				mnu.css("padding-top", headerHeight);
 				$(this).toggleClass("active");
-				
+
 				_body.toggleClass("mmm-open").scrollTop(headeFixedOffsetTop);
-					
+
 				if(_body.hasClass("mmm-open")) {
 					$(".mf-bg").addClass("visible mm");
 				} else {
 					$(".mf-bg").removeClass("visible mm");
 				}
-	
+
 			},
 
 			closeNotEl: function(e) {
@@ -232,14 +232,14 @@
 					$(".mf-bg").removeClass("visible mm");
 					e.originalEvent.stopPropagation();
 				}
-	
+
 			}
 
 		},
 
 		//=== Ripple effect for buttons ===\\
 		btnRipple: function(e) {
-			
+
 			var _this = $(this),
 				offset = $(this).offset(),
 				positionX = e.originalEvent.pageX - offset.left,
@@ -266,7 +266,7 @@
 
 			btns.forEach(function(element, index) {
 
-				var span = document.createElement("span"); 
+				var span = document.createElement("span");
 				span.className = "el-ripple-circle";
 				element.appendChild(span);
 
@@ -274,14 +274,14 @@
 				if (!btn[index])
 				btn[index] = element.querySelector(".el-ripple-circle");
 
-				element.addEventListener("mouseenter", function(e) {	
-					btnHandler(element, index, e);			
+				element.addEventListener("mouseenter", function(e) {
+					btnHandler(element, index, e);
 				});
 
 				element.addEventListener("mouseleave", function(e) {
 					btnHandler(element, index, e);
 				});
-				
+
 			});
 
 			const btnHandler = function(element, index, e) {
@@ -329,17 +329,17 @@
 			return !isNaN(parseFloat(n)) && isFinite(n);
 
 		},
-		
+
 		//=== Content table responsive ===\\
 		contentTable: function() {
 
 			var contentTable = $(".content");
 			if(contentTable.length) {
-				
+
 				$.each(contentTable.find("table"), function() {
 					$(this).wrap("<div class='table-responsive-outer'></div>").wrap("<div class='table-responsive'></div>");
 				});
-				
+
 			}
 
 		},
@@ -352,7 +352,7 @@
 				$(window).on("scroll load resize", function () {
 
 					app.counters.spincrement();
-	
+
 				});
 
 			},
@@ -360,30 +360,30 @@
 			spincrement: function() {
 
 				var counters = $(".spincrement-container");
-	
+
 				if(counters.length) {
-	
+
 					jQuery.each(counters, function() {
-	
+
 						var _this = $(this);
-		
+
 						if ( $(window).scrollTop() > _this.offset().top - ($(window).height() * 0.85) && !_this.hasClass("animated") ) {
-		
+
 							_this.addClass("animated");
-		
+
 							_this.find('.spincrement').spincrement({
 								duration: 1500,
 								leeway: 10,
 								thousandSeparator: '',
 								decimalPoint: ''
 							});
-							
+
 						}
-		
+
 					});
-	
+
 				}
-	
+
 			},
 
 		},
@@ -406,9 +406,11 @@
 			}
 
 		},
-		
+
 	}
- 
+
 	app.init();
- 
+
 }());
+
+

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('tipo_identificacao'); // CNPJ ou CPF
             $table->string('cnpj_cpf');
-            $table->string('contrato'); // Strig com 4 números e 2 letras
+            $table->string('contrato')->unique(); // Strig com 6 caracteres
             $table->string('nome');
             $table->string('email');
             $table->string('cep')->nullable();
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('complemento')->nullable();
             $table->string('telefone')->nullable();
             $table->foreignIdFor(Cidade::class)->nullable();
-            $table->date('data_entrada')->nullable();
             $table->date('data_saida')->nullable();
             $table->timestamps();
         });

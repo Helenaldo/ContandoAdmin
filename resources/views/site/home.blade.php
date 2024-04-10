@@ -18,11 +18,11 @@
                             </p>
                         </div>
                         <div class="btn-group intro-btns">
-                            <a href="{{ route('cadastro') }}"
+                            <a href="{{ route('tenant.create')}}"
                                 class="btn btn-border btn-with-icon btn-small ripple">
                                 <span>Testar agora</span>
                                 <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9">
-                                    <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
+                                    <use xlink:href="/assets/img/sprite.svg#arrow-right"></use>
                                 </svg>
                             </a>
                         </div>

@@ -1,9 +1,9 @@
 (function() {
 
 	"use strict";
-  
+
 	const app = {
-		
+
 		init: function() {
 
 			app.setUpListeners();
@@ -21,7 +21,7 @@
 			errorTextClass: 'error'
 		},
 		AJAX_URL: './assets/php/handle.php',
- 
+
 		setUpListeners: function() {
 
             $(".form-submission").on("submit", app.form);
@@ -159,7 +159,7 @@
 				body = $("body"),
 				alertClass = "",
 				alertIco = "info";
-			
+
 			if (!alerts.length) {
 				body.append('<div class="alerts"></div>');
 			}
@@ -204,9 +204,9 @@
 			});
 
 		},
-		
+
 	}
- 
+
 	app.init();
- 
+
 }());
