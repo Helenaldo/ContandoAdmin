@@ -1,5 +1,8 @@
 @extends('layouts.admin-layout')
 @section('title', 'Dashboard')
 @section('content')
-Testando
+<div class="container">
+    Listagem de Tenants
+</div>
+
 @endsection

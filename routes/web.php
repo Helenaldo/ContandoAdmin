@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\TenantCreateController;
@@ -16,9 +17,11 @@ Route::get('/tenant/welcome', [TenantCreateController::class, 'welcome'])->name(
 
 // FIM DAS ROTAS PÚBLICAS DO SITE
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/admin/tenant/listar', [TenantController::class, 'index'] )->name('tenant.listar');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

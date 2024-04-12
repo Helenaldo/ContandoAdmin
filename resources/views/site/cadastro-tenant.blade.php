@@ -103,7 +103,7 @@
                             <div class="col-xl-6 col-sm-6 col-12">
                                 <div class="form-field">
                                     <label for="cep" class="form-field-label">CEP*</label>
-                                    <input type="text" id="cep" class="form-field-input" name="cep" value="{{old('cep')}}" required>
+                                    <input type="text" id="cep" onblur="pesquisacep(this.value);" class="form-field-input" name="cep" value="{{ old('cep') }}" required>
                                 </div>
                                 @error('cep')
                                     <div class="text-danger"> <i class="icon fas fa-ban"></i> {{$message}}</div>
@@ -114,7 +114,7 @@
                             <div class="col-12">
                                 <div class="form-field">
                                     <label for="logradouro" class="form-field-label">Logradouro*</label>
-                                    <input type="text" class="form-field-input" name="logradouro" value="{{old('logradouro')}}" required>
+                                    <input type="text" id="logradouro" class="form-field-input" name="logradouro" value="{{old('logradouro')}}" required>
                                 </div>
                                 @error('logradouro')
                                     <div class="text-danger"> <i class="icon fas fa-ban"></i> {{$message}}</div>
@@ -136,7 +136,7 @@
                             <div class="col-xl-4 col-sm-6 col-12">
                                 <div class="form-field">
                                     <label for="bairro" class="form-field-label">Bairro*</label>
-                                    <input type="text" class="form-field-input" name="bairro" value="{{old('bairro')}}" required>
+                                    <input type="text" id="bairro" class="form-field-input" name="bairro" value="{{old('bairro')}}" required>
                                 </div>
                                 @error('bairro')
                                     <div class="text-danger"> <i class="icon fas fa-ban"></i> {{$message}}</div>
@@ -168,7 +168,8 @@
 
                             <div class="col-xl-6 col-sm-6 col-12">
                                 <div class="form-field">
-                                    {{-- <label for="tipo_identificacao" class="form-field-label">Selecione CNPJ ou CPF</label> --}}
+                                    <input type="hidden" id="cidade" value="">
+                                    <input type="hidden" id="uf" value="">
                                     <select name="cidade_id" id="cidade_id" class="form-field-select select2" required>
                                         <option value="">Selecione a Cidade*</option>
                                         @foreach ($cidades as $cidade)
@@ -206,6 +207,7 @@
 @endsection
 
 @section('js')
+    <script src="/assets/js/cep.js"></script>
     <script src="/assets/js/mascaras.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
