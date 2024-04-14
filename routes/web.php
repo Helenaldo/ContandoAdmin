@@ -18,7 +18,7 @@ Route::get('/tenant/welcome', [TenantCreateController::class, 'welcome'])->name(
 // FIM DAS ROTAS PÚBLICAS DO SITE
 
 Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
+    return view('admin.dashboard', ['activeRoute' => 'dashboard']);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/admin/tenant/listar', [TenantController::class, 'index'] )->name('tenant.listar');

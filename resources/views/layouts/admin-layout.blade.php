@@ -188,12 +188,12 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">CONTANDO admin</span>
+      <img src="/assets/img/LogoContandoC.png" alt="Contando Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">CONTANDO <b>admin</b></span>
     </a>
 
     <!-- Sidebar -->
-        <x-sidebar.sidebar/>
+        <x-sidebar :activeRoute="$activeRoute"/>
     <!-- /.sidebar -->
   </aside>
 
@@ -201,17 +201,28 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
+    {{-- <div class="content-header">
+        <div class="container-fluid">
+          <div class="mb-2 row">
+            <div class="col-sm-6">
+              <h1 class="m-0">Dashboard11111</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard v1</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div> --}}
 
 
 
-    {{-- COLOCAR AQUI MENUS DE NAVEGAÇÃO E PESQUISA     --}}
 
 
 
 
-
-
-    <x-body.content-header/>
     <!-- /.content-header -->
 
     <!-- Main content -->
@@ -282,10 +293,11 @@
 <script src="/dist/js/adminlte.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="/dist/js/demo.js"></script>
+{{-- <script src="/dist/js/demo.js"></script> --}}
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/dist/js/pages/dashboard.js"></script>
+{{-- <script src="/dist/js/pages/dashboard.js"></script> --}}
+
 
 </body>
 </html>

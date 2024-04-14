@@ -5,7 +5,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="/admin/dashboard" class="nav-link active">
+          <a href="{{ route('dashboard')}}" class="nav-link {{ $activeRoute == 'dashboard' ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
@@ -13,8 +13,8 @@
           </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('tenant.listar') }}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="{{ route('tenant.listar') }}" class="nav-link {{ $activeRoute == 'tenants' ? 'active' : '' }}">
+              <i class="nav-icon fas fa-id-card"></i>
               <p>
                 Tenants
               </p>
