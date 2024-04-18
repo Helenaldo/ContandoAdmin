@@ -21,12 +21,14 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard', ['activeRoute' => 'dashboard']);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/admin/tenant/listar', [TenantController::class, 'index'] )->name('tenant.listar');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/admin/tenant/listar', [TenantController::class, 'index'])->name('tenant.listar');
+    Route::get('/admin/tenant/{id}/edit', [TenantController::class, 'edit'])->name('tenant.edit');
+    Route::put('/admin/tenant/update', [TenantController::class, 'update'])->name('tenant.update');
 });
 
 require __DIR__.'/auth.php';

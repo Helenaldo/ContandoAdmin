@@ -30,12 +30,12 @@ class TenantCreateController extends Controller
 
     public function store(TenantCreateRequest $request)
     {
-        //dd($request->tipo_identificacao);
+
         $tenant = $request->only([
             'tipo_identificacao', // CNPJ ou CPF
             'cnpj_cpf',
             'nome',
-            'email', // sempre transformar em minúsculo
+            'email',
             'cep',
             'logradouro',
             'numero',
@@ -50,11 +50,13 @@ class TenantCreateController extends Controller
         // Gerando um contrato para o Tenant
         $tenant['contrato'] = $this->identifierService->generateUniqueIdentifier();
 
-        // Salvando na tabele Tenant
-        Tenant::create($tenant);
+        // Salvando na tabela Tenant
+        $createdTenant = Tenant::create($tenant);
 
         // Salvando o primeiro usuário do Tenant
         $user = [
+            'tenant_id' => $createdTenant->id, // Utilizando o ID do Tenant recém-criado
+            'tenant_contrato' => $createdTenant['contrato'], // Utilizando o contrato do Tenant recém-criado
             'name' => $tenant['nome'],
             'email' => $tenant['email'], // O email já está em minúsculas
             'password' => Hash::make('password'), // Senha provisória 'password'

@@ -2,13 +2,15 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use App\Rules\CidadeExiste;
 use App\Rules\CleanCepRule;
 use App\Rules\CnpjValidationRule;
 use App\Rules\CpfValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class TenantCreateRequest extends FormRequest
+class TenantUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,32 +28,9 @@ class TenantCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tipo_identificacao' => 'required|in:CNPJ,CPF',
-
-            'cnpj_cpf' => [
-                'required',
-                'unique:tenants,cnpj_cpf',
-                'string',
-                function ($attribute, $value, $fail) {
-                    if ($this->input('tipo_identificacao') === 'CPF') {
-                        $rule = new CpfValidationRule;
-                        if ($rule->passes($attribute, $value, $fail)) {
-                            return;
-                        }
-                    } elseif ($this->input('tipo_identificacao') === 'CNPJ') {
-                        $rule = new CnpjValidationRule;
-                        if ($rule->passes($attribute, $value, $fail)) {
-                            return;
-                        }
-                    }
-
-                    $fail("O campo $attribute não pôde ser validado.");
-                },
-            ],
-
 
             'nome' => 'required|string|max:255',
-            'email' => 'required|email|lowercase|unique:users,email',
+            'email' => ['required','lowercase','email', Rule::unique(User::class)->ignore($this->user()->id)],
             'cep' => ['required','string', new CleanCepRule],
             'logradouro' => 'required|string|max:255',
             'numero' => 'required|string|max:10',
@@ -59,6 +38,8 @@ class TenantCreateRequest extends FormRequest
             'complemento' => 'nullable|string|max:255',
             'telefone' => 'required|string',
             'cidade_id' => ['required', 'integer', new CidadeExiste],
+            'data_saida' => 'date'
+
         ];
     }
 }

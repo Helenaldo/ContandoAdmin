@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tenant extends Model
 {
@@ -29,6 +30,11 @@ class Tenant extends Model
     // Vários Tenants tem uma cidade
     public function cidade(): BelongsTo {
         return $this->belongsTo(Cidade::class);
+    }
+
+    // Um Tenant tem vários Usuários
+    public function users(): HasMany {
+        return $this->hasMany(User::class);
     }
 }
 

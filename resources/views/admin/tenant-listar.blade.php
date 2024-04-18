@@ -50,7 +50,9 @@
                                                 <td>{{$tenant->cnpj_cpf}}</td>
                                                 <td>{{$tenant->cidade->municipio}} - {{$tenant->cidade->UF}}</td>
                                                 <td>{{$tenant->telefone}}</td>
-                                                <td>Ações</td>
+                                                <td>
+                                                    <a href="{{ route('tenant.edit', ['id' => $tenant->id]) }}"> <i class="nav-icon fas fa-pen"></i></a>
+                                                </td>
                                             </tr>
 
                                             @endforeach
